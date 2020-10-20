@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgis
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: frumento
+  password: 
+  host: localhost
+
+development:
+  <<: *default
+  database: coffee_api_development
+
+test:
+  <<: *default
+  database: coffee_api_test
+
+production:
+  <<: *default
+  database: coffee_api_production
+  username: coffee_api
+  password: <%= ENV['COFFEE_API_DATABASE_PASSWORD'] %>
